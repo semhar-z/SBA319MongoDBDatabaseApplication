@@ -2,9 +2,10 @@ import mongoose from 'mongoose';
 
 const CommentSchema = new mongoose.Schema({
     postId: {
-        type: mongoose.Schema.Types.ObjectId,
+        // type: mongoose.Schema.Types.ObjectId,
+        type: Number,
         required: true,
-        ref: 'Post', // Assuming there's a Post collection in your sample training DB
+        // ref: 'Post', //Post collection
     },
     content: {
         type: String,
@@ -24,4 +25,5 @@ const CommentSchema = new mongoose.Schema({
 
 
 CommentSchema.index({ postId: 1, createdAt: -1 });  // For optimized lookups by post and date
+
 export  default mongoose.model('Comment', CommentSchema);
