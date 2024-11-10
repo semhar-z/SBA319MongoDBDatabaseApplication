@@ -24,5 +24,5 @@
 
 - For the - posts - data collection I created GET route to display all the posts, thru Id and author/authorName.
 
-- 
+- And I tested and populated 10 sample data thru post request to posts data collection
   

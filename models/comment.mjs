@@ -9,13 +9,13 @@ const CommentSchema = new mongoose.Schema({
     },
     content: {
         type: String,
-        required: [true, 'Content is required'],
-        minlength: [5, 'Content must be at least 5 characters long'],
+        required: true,
+        minlength: 5,
     },
     author: {
         type: String,
         required: true,
-        minlength: [3, 'Author name must be at least 3 characters'],
+        minlength: 3,
     },
     createdAt: {
         type: Date,

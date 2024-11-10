@@ -34,4 +34,26 @@ router.get('/author/:authorName', async (req, res) => {
     }
 });
 
+// Add a new post
+router.post('/', async (req, res) => {
+    const { body, permalink, author, title, tags, comments, date } = req.body;
+
+    const newPost = new Post({
+        body,
+        permalink,
+        author,
+        title,
+        tags,
+        comments, // Pass the array of comments here
+        date
+    });
+
+    try {
+        const savedPost = await newPost.save();
+        res.status(201).json(savedPost);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+});
+
 export default router;
