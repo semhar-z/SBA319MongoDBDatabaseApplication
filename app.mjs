@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import connectDB from './db/conn.mjs';
 import comment from './routes/comments.mjs';
 import post from './routes/posts.mjs';
+import grade from './routes/grades.mjs'
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -18,6 +19,8 @@ app.use(bodyParser.json());
 app.use('/api/comments', comment);
 // posts routes
 app.use('/api/posts', post);
+// grades routes
+app.use('/api/grades', grade);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

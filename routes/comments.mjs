@@ -1,6 +1,7 @@
 import express from 'express';
-const router = express.Router();
 import Comment from '../models/comment.mjs';
+
+const router = express.Router();
 
 // Create a comment
 router.post('/', async (req, res) => {

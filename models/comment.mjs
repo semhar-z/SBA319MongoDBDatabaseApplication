@@ -2,20 +2,21 @@ import mongoose from 'mongoose';
 
 const CommentSchema = new mongoose.Schema({
     postId: {
-        // type: mongoose.Schema.Types.ObjectId,
         type: Number,
-        required: true,
-        // ref: 'Post', //Post collection
+        required: true, 
+        min: 1
     },
     content: {
         type: String,
         required: true,
         minlength: 5,
+        maxlength: 500
     },
     author: {
         type: String,
         required: true,
         minlength: 3,
+        maxlength: 100
     },
     createdAt: {
         type: Date,
@@ -23,7 +24,9 @@ const CommentSchema = new mongoose.Schema({
     },
 });
 
+// index by postId and createdAt
+CommentSchema.index({ postId: 1, createdAt: -1 }); 
 
-CommentSchema.index({ postId: 1, createdAt: -1 });  // For optimized lookups by post and date
+const Comment = mongoose.model('Comment', CommentSchema);
 
-export  default mongoose.model('Comment', CommentSchema);
+export  default Comment;
